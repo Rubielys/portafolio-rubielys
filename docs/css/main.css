@@ -1,0 +1,750 @@
+/* ----------------------------------------
+01. Basic Styles
+---------------------------------------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --main-color: #d00;
+  --main-color-rgb: 255, 0, 0;
+  --bg-color: #080808;
+  --main-font: "Poppins", sans-serif;
+  --secondary-font: "Roboto", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  overflow-x: hidden;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #080808;
+  color: #ddd;
+}
+::selection {
+  background-color: #d00;
+  color: black;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+p {
+  line-height: 1.8;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+section {
+  margin-bottom: 100px;
+  overflow: hidden;
+}
+.sec-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.sec-title h3 {
+  color: var(--main-color);
+  font-size: 18px;
+  font-weight: 700;
+  width: fit-content;
+  margin: auto;
+  text-transform: uppercase;
+  position: relative;
+  user-select: none;
+}
+.sec-title h3::before,
+.sec-title h3::after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: var(--main-color);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sec-title h3::before {
+  right: calc(100% + 10px);
+}
+.sec-title h3::after {
+  left: calc(100% + 10px);
+}
+.sec-title h2 {
+  font-size: 42px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.button {
+  display: inline-block;
+  outline: none;
+  padding: 8px 28px;
+  border: 2px solid var(--main-color);
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  user-select: none;
+}
+.button:hover {
+  background-color: transparent;
+  color: var(--main-color);
+}
+.button.secondary {
+  background-color: transparent;
+  color: var(--main-color);
+}
+.button.secondary:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+.scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  opacity: 0;
+  transform: translateY(90px);
+}
+.scroll-top.active {
+  opacity: 1;
+  transform: none;
+}
+.logo {
+  color: var(--main-color);
+  font-size: 40px;
+  font-weight: 700;
+}
+@media (min-width: 1200px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl {
+    max-width: 1185px;
+  }
+}
+
+/* ----------------------------------------
+02. Preloader
+---------------------------------------- */
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-color);
+  z-index: 999999;
+}
+.sk-folding-cube {
+  position: absolute;
+  top: 48%;
+  left: 48%;
+  width: 40px;
+  height: 40px;
+  -webkit-transform: rotateZ(45deg);
+  transform: rotateZ(45deg);
+}
+.sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.sk-folding-cube .sk-cube:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+  animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+}
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+  transform: scale(1.1) rotateZ(90deg);
+}
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+  transform: scale(1.1) rotateZ(180deg);
+}
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+  transform: scale(1.1) rotateZ(270deg);
+}
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+  animation-delay: 0.9s;
+}
+@-webkit-keyframes sk-foldCubeAngle {
+  0%,
+  10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+    transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%,
+  75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+    transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+  100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+    transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+@keyframes sk-foldCubeAngle {
+  0%,
+  10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+    transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%,
+  75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+    transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+  100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+    transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+/* ----------------------------------------
+03. Header Area
+---------------------------------------- */
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  z-index: 10;
+  user-select: none;
+}
+header.sticky {
+  position: fixed;
+  height: 80px;
+  background-color: var(--bg-color);
+  box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
+  animation: fadeInDown 1s both 0.2s;
+}
+header .container {
+  height: 100%;
+}
+header nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header .nav-list {
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+  margin-bottom: 0;
+}
+header .nav-list a {
+  display: flex;
+  color: #ddd;
+  font-size: 16px;
+  transition: 0.3s;
+  position: relative;
+}
+header .nav-list a::before,
+header .nav-list a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--main-color);
+  transition: 0.3s;
+}
+header .nav-list a::before {
+  left: 50%;
+}
+header .nav-list a::after {
+  right: 50%;
+}
+header .nav-list a:hover::before,
+header .nav-list a.active::before {
+  width: 50%;
+}
+header .nav-list a:hover::after,
+header .nav-list a.active::after {
+  width: 50%;
+}
+header .nav-list a:hover,
+header .nav-list a.active {
+  color: var(--main-color);
+}
+header .menu-toggler {
+  display: none;
+}
+
+/* ----------------------------------------
+04. Hero Section
+---------------------------------------- */
+
+section.hero {
+  margin-top: 0;
+  min-height: 100vh;
+  height: 100vh;
+
+  background: url("../images/hero.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.hero h3 {
+  color: #d00;
+  font-size: 18px;
+  font-weight: 600;
+}
+.hero h2 {
+  font-size: 46px;
+  font-weight: 700;
+}
+.hero h2 span {
+  color: #d00;
+}
+.hero .btn-box {
+  margin-top: 40px;
+  display: flex;
+  gap: 10px;
+}
+
+/* ----------------------------------------
+05. About Section
+---------------------------------------- */
+
+.about .text p {
+  line-height: 200%;
+}
+.about ul {
+  margin-top: 20px;
+}
+.about ul li {
+  display: flex;
+}
+.about ul li span {
+  position: relative;
+  width: 160px;
+  font-weight: 600;
+}
+.about ul li span::after {
+  content: ":";
+  position: absolute;
+  right: 0;
+}
+.about ul li p {
+  margin-left: 20px;
+}
+.about .button {
+  margin-top: 0px;
+}
+
+.about .skills .item {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.about .skills .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.about .skills .bar {
+  width: 0%;
+  height: 5px;
+  background-color: var(--main-color);
+}
+
+/* ----------------------------------------
+06. Service Section
+---------------------------------------- */
+
+.service-card {
+  background-color: #111;
+  padding: 36px 28px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.service-card i {
+  font-size: 40px;
+  color: var(--main-color);
+}
+.service-card h4 {
+  margin: 16px 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.service-card:hover {
+  background-color: var(--main-color);
+}
+.service-card:hover i {
+  color: #fff;
+}
+.service-card:hover h4 {
+  color: #fff;
+}
+
+/* ----------------------------------------
+07. Portfolio Section
+---------------------------------------- */
+
+.portfolio ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  gap: 5px;
+}
+.portfolio ul li {
+  padding: 5px 10px;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  user-select: none;
+}
+.portfolio ul li:hover,
+.portfolio ul li.active {
+  color: #fff;
+}
+.portfolio ul li::after {
+  content: "";
+  width: 0;
+  height: 100%;
+  background-color: var(--main-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.3s;
+  z-index: -1;
+}
+.portfolio ul li:hover::after,
+.portfolio ul li.active::after {
+  width: 100%;
+}
+
+.portfolio .filter-items {
+  margin-top: 40px;
+}
+.portfolio .filter-item {
+  width: 33.33%;
+  padding: 6px;
+}
+.portfolio-card {
+  position: relative;
+  user-select: none;
+}
+.portfolio-card a {
+  display: flex;
+}
+.portfolio-card img {
+  width: 100%;
+}
+
+.portfolio-card .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--main-color-rgb), 0.6);
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+.portfolio-card:hover .text {
+  opacity: 1;
+  visibility: visible;
+}
+.portfolio-card .text {
+  text-align: center;
+  color: white;
+}
+
+/* ----------------------------------------
+08. Counters Section
+---------------------------------------- */
+
+.counter-card {
+  text-align: center;
+  background-color: #111;
+  padding: 30px 20px;
+}
+.counter-card h2 {
+  font-size: 36px;
+  font-weight: 700;
+}
+.counter-card h4 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* ----------------------------------------
+09. Testimonial Section
+---------------------------------------- */
+
+.testimonial-card {
+  width: 100%;
+  padding: 50px 40px;
+  background-color: #111;
+}
+.testimonial-card .client {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.testimonial-card .client .image {
+  display: flex;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.testimonial-card .client .image img {
+  width: 6em;
+}
+.testimonial-card .client h4 {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+.testimonial-card .client p {
+  font-size: 15px;
+  margin-bottom: 0;
+}
+.testimonial-card .client span i {
+  color: var(--main-color);
+}
+.testimonial-card .commnet {
+  flex: 1;
+}
+
+/* ----------------------------------------
+10. Blog Section
+---------------------------------------- */
+
+.blog-card {
+  background-color: #111;
+  transition: 0.3s;
+}
+.blog-card:hover {
+  transform: translateY(-10px);
+}
+.blog-card img {
+  width: 100%;
+}
+.blog-card .text {
+  padding: 20px;
+}
+.blog-card .text h3 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.blog-card .text p {
+  margin-top: 14px;
+}
+.blog-card .text .button {
+  margin-top: 20px;
+}
+
+/* ----------------------------------------
+11. Contact Section
+---------------------------------------- */
+
+.contact ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.contact ul li i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  transition: 0.3s;
+}
+.contact ul li i:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+.contact ul li .text {
+  margin-left: 10px;
+}
+.contact ul li .text h4 {
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+.contact ul li .text p {
+  margin-bottom: 0;
+}
+
+.form-control {
+  padding: 10px 16px;
+  outline: none;
+  box-shadow: none !important;
+  background-color: #111;
+  border-color: transparent;
+  border-radius: 0;
+  color: #fff;
+}
+.form-control:focus {
+  background-color: #111;
+  border-color: var(--main-color);
+  color: #fff;
+}
+.form-control::placeholder {
+  color: #fff4;
+}
+
+/* ----------------------------------------
+12. Footer Area
+---------------------------------------- */
+
+footer {
+  background-color: #111;
+  padding: 40px 0;
+  text-align: center;
+}
+
+footer .social-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 40px;
+}
+footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+}
+footer .social-links a i {
+  font-size: 18px;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+footer .developer a {
+  color: var(--main-color);
+  text-decoration: underline;
+}
+
+/* ----------------------------------------
+13. Responsive
+---------------------------------------- */
+
+@media (max-width: 992px) {
+  .portfolio .filter-item {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .portfolio .filter-item {
+    width: 100%;
+  }
+}
+@media (max-width: 992px) {
+  header .nav-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    max-height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: 0.3s;
+  }
+  header .nav-list.active {
+    transform: scaleY(1);
+  }
+  header .menu-toggler {
+    display: block;
+  }
+}
+
+@media (max-width: 992px) {
+  section.hero {
+    background-position: right;
+  }
+}
